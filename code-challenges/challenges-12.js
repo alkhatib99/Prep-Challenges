@@ -15,11 +15,12 @@
 // ------------------------
 
 const oddFiltration = (arr) => {
-let res=[];    
-arr.map(element=>{
+let res=arr.filter(checkOdd);    
+    
+  function  checkOdd(element){
 if(element %2 !=0 )
-res.push(element);
-});
+return element;
+    };
 return res ; 
     // write your code here
 }
@@ -73,21 +74,41 @@ return res ;
 
 const cvsFiltration = (arr) => {
     let res=[];
+    arr.map(elem=>checkCv(elem));
     
-    arr.map(elem=>{
-        let fullName="";
+    function checkCv(elem){
+        // let fullName="";
+        let cv=null;
+
         if(elem.yearsOfExperience > 4  && elem.tech === "JS")
-    {let cv={
+    {
+if(elem.firstName!=null && elem.LastName!=null) 
+      { cv= {
         fullName:`${elem.firstName} ${elem.LastName}`,
-        tech:elem.tech
-    };
-res.push(cv);    
+        tech:elem.tech};}
+
+        else if(elem.firstName == null)
+        {
+           cv= {
+                fullName:`${elem.LastName}`,
+                tech:elem.tech};
+        }
+
+        else if (elem.LastName == null)
+        {
+            cv= {
+                fullName:`${elem.firstName}`,
+                tech:elem.tech};
+        }
+
 }
-        
-    });
+  if(cv!=null)
+  res.push(cv);      
+    }
+    
     return res;
     // write your code here
-}
+};
 
 // 3) ---------------------
 //
@@ -99,17 +120,18 @@ res.push(cv);
 // ------------------------
 
 const vowelsFiltration = (arr) => {
-    let res=[];
-    let valid =/[aieou]/;
-    arr.map(elem=>{
+    let res=arr.filter(valid);
+        
+        function valid(elem){
         //let c1 = elem.includes('a'),c2=elem.includes('e'),c3=elem.includes('o'),c4=elem.includes('i'),c5=elem.includes('u');
 
         //if(!c1 && !c2 && !c3 && !c4 && !c5)
+        
+        let valid =/[aieou]/;
         if(valid.test(elem) ==false)
-        res.push(elem);
+        return elem;
 
-
-    });
+    };
     return res;
     // write your code here
 } 
@@ -132,7 +154,7 @@ const skillComparison = (arr1, arr2) => {
     // write your code here
 
     let res = [];
-    arr1.map(elem =>{
+arr1.map(elem =>{
 if(!arr2.includes(elem))
 res.push(elem);      
 });
