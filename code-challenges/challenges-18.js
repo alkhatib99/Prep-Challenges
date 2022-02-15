@@ -45,7 +45,7 @@ return arr[middle].length
 const wordLetters = (str1, str2) => {
     // write your code here
 let array = str1.split('');
-console.log(array)
+// console.log(array)
 array.forEach(element=>{
     if(str2.includes(element))
     {
@@ -55,7 +55,6 @@ array.forEach(element=>{
         return false;
     }
 });
-console.log(str2)
 
 if(str2 === "")
 return true;
